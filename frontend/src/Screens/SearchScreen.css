@@ -1,0 +1,24 @@
+.after{
+    font-weight: bolder ;
+    text-decoration: none;
+    color: black;
+}
+
+.before{
+    text-decoration: none;
+    color: black;
+}
+
+.after:hover,.before:hover{
+    color: black;
+}
+
+.search-box{
+    margin-top: 20px;
+    padding-right: 30px;
+    padding-left: 50px;
+}
+
+.card-wrapper{
+    z-index: 10;
+}

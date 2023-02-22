@@ -1,0 +1,25 @@
+.wrong {
+    box-shadow: inset 2px 2px 4px red, inset -2px -2px 4px red !important;
+    align-items: center;   
+    display: flex;
+}
+.right{
+    align-items: center;
+    display: flex;
+}
+.subb{
+    animation: shake 0.3s 2;
+}
+
+  @keyframes  shake{
+    25%{
+        translate: 6px 0 ;
+    }
+    50%{
+        translate: -6px 0 ;
+    }
+    75%{
+        translate: 6px 0 ;
+    }
+
+  }
