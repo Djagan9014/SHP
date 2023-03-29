@@ -2,9 +2,9 @@ FROM node:16
 
 WORKDIR /server
 
-COPY package.json /server
-RUN npm i
 
+RUN npm i
+COPY package.json /server
 COPY . /server
 
 EXPOSE 3000
