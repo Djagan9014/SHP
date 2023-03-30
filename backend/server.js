@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import userRouter from './routes/userRoutes.js';
 import itemrouter from './routes/itemRoutes.js';
 import orderRouter from './routes/orderRoute.js';
+import cors from "cors";
 
 mongoose
   .connect('mongodb+srv://dj9014:cBQj0xUEln4xzxAy@cluster1.eaxbcvc.mongodb.net/test',{
@@ -20,6 +21,7 @@ mongoose
 dotenv.config()
 const app = express();
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use((err, req, res, next) => {
