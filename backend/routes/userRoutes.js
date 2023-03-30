@@ -13,6 +13,8 @@ userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -42,6 +44,8 @@ userRouter.post(
   
   expressAsyncHandler(async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     const usem = await User.findOne({ email: req.body.email });
     if (usem) {
       res.send({message:"user Already Present"})
