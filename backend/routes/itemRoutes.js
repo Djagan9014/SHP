@@ -47,7 +47,7 @@ itemrouter.get('/categories/at/:type', expressAsyncHandler(async (req, res) => {
 )
 
 itemrouter.get('/categories/all', expressAsyncHandler(async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
+    //res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const categorie = await Item.find().distinct('category');
     res.send(categorie);
   })
@@ -55,6 +55,7 @@ itemrouter.get('/categories/all', expressAsyncHandler(async (req, res) => {
 
 itemrouter.put('/:id',
     expressAsyncHandler(async (req, res) => {
+
       const item = await Item.findById(req.params.id);
       if (item) {
         item.countInStock = req.body.countInStock
