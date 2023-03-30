@@ -12,7 +12,7 @@ const userRouter = express.Router();
 userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin','');
+    res.setHeader('Access-Control-Allow-Origin','*');
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
