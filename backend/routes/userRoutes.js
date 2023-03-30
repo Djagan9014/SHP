@@ -12,6 +12,7 @@ const userRouter = express.Router();
 userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -40,6 +41,7 @@ userRouter.post(
   '/signup',
   
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const usem = await User.findOne({ email: req.body.email });
     if (usem) {
       res.send({message:"user Already Present"})
@@ -66,6 +68,7 @@ userRouter.post(
 
 userRouter.get('/getusers',
 expressAsyncHandler(async(req,res)=>{
+  res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
   const users = await User.find({});
   res.send(users);
 }))
@@ -73,6 +76,7 @@ expressAsyncHandler(async(req,res)=>{
 userRouter.delete(
   '/:id',
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const user = await User.findById(req.params.id);
     if (user) {
       if (user.email === 'dasarijagan996@gmail.com') {
@@ -90,6 +94,7 @@ userRouter.delete(
 userRouter.get(
   '/:id',
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const user = await User.findById(req.params.id);
     if (user) {
       res.send(user);
@@ -102,6 +107,7 @@ userRouter.get(
 userRouter.put(
   '/:id',
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const user = await User.findById(req.params.id);
     if (user) {
       user.name = req.body.name || user.name;
@@ -119,6 +125,7 @@ userRouter.put(
 userRouter.patch(
   '/profile',
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const user = await User.findById(req.body._id);
     if (user) {
       user.name = req.body.name || user.name;

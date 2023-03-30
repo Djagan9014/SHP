@@ -33,8 +33,8 @@ app.listen(port, () => {
 
 
 
-app.use('/api/items',res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app'), itemrouter)
-app.use('/api/users',res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app'), userRouter);
-app.use('/api/orders',res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app'), orderRouter)
+app.use('/api/items', itemrouter)
+app.use('/api/users', userRouter);
+app.use('/api/orders', orderRouter)
 
 
