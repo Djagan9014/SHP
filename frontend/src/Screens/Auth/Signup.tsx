@@ -150,7 +150,6 @@ export function Signup() {
               }, 3000);
             } else if (res.data.name) {
               console.log(res.data.name);
-
               navigate("/login");
             }
           })
