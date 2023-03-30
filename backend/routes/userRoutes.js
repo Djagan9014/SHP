@@ -44,8 +44,6 @@ userRouter.post(
   
   expressAsyncHandler(async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin','*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     const usem = await User.findOne({ email: req.body.email });
     if (usem) {
       res.send({message:"user Already Present"})
@@ -72,7 +70,7 @@ userRouter.post(
 
 userRouter.get('/getusers',
 expressAsyncHandler(async(req,res)=>{
-  res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   const users = await User.find({});
   res.send(users);
 }))

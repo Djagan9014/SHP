@@ -13,7 +13,7 @@ export function UserList() {
   const {userInfo} = state
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("api/users/getusers", {
+    axios.get(`${BASE_URL}/api/users/getusers`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     }).then((res) => {
       setuser(res.data);
