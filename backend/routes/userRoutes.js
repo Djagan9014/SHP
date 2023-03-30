@@ -41,7 +41,7 @@ userRouter.post(
   '/signup',
   
   expressAsyncHandler(async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin','https://glistening-hotteok-eb9a5f.netlify.app');
+    res.setHeader('Access-Control-Allow-Origin','*');
     const usem = await User.findOne({ email: req.body.email });
     if (usem) {
       res.send({message:"user Already Present"})
