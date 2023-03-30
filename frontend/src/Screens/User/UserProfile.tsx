@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../helper";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export function Profile() {
     event.preventDefault();
     console.log("hiii");
     await axios
-      .patch("/api/users/profile", { _id, name, email, password })
+      .patch(`${BASE_URL}/api/users/profile`, { _id, name, email, password })
       .then((res) => {
         //console.log(res);
         localStorage.setItem("HasUser", res.data.name);

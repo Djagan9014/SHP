@@ -1,0 +1,1 @@
+export const BASE_URL = "https://shopify12.onrender.com";

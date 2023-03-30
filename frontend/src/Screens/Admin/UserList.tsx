@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { Store } from "../../Store";
 import { stat } from "fs";
-
+import { BASE_URL } from "../../helper";
 export function UserList() {
   const [users, setuser] = useState<any>([]);
   const {state} = useContext(Store);
@@ -21,7 +21,7 @@ export function UserList() {
   });
 
   const deleteHandler = (user: any) => {
-    axios.delete(`/api/users/${user._id}`).then((res) => {
+    axios.delete(`${BASE_URL}/api/users/${user._id}`).then((res) => {
       Swal.fire(res.data.message);
       console.log(res);
     });

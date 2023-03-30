@@ -5,6 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { StoreItem } from "../components/Item";
 import "./SearchScreen.css"
+import { BASE_URL } from "../helper";
 
 export function Search() {
   const { search } = useLocation();
@@ -32,7 +33,7 @@ export function Search() {
 
   useEffect(() => {
     axios
-      .get(`/api/items/search/sea?query=${query}&price=${price}&category=${category}`)
+      .get(`${BASE_URL}/api/items/search/sea?query=${query}&price=${price}&category=${category}`)
       .then((res) => {
         console.log(res.data.items);
         setitems(res.data.items);
@@ -46,7 +47,7 @@ export function Search() {
     const fetchdata = async () => {
       try {
         await axios
-          .get(`/api/items/categories/all`)
+          .get(`${BASE_URL}/api/items/categories/all`)
           .then((res) => {
             setCategories(res.data);
           })
