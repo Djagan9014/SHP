@@ -19,8 +19,9 @@ export function Home() {
     const fetchdata = async () => {
       try {
         await axios
-          .get(`/api/items/categories/all`)
+          .get(`https://shopify12.onrender.com/api/items/categories/all`)
           .then((res) => {
+          
             setCategories(res.data);
           })
           .catch((err) => console.log(err));
@@ -37,8 +38,8 @@ export function Home() {
   }, []);
   useEffect(() => {
     const fetchdata1 = async () => {
-      let one = axios.get(`/api/items/categories/at/Furniture`);
-      let two = axios.get(`/api/items/categories/at/Decorators`);
+      let one = axios.get(`https://shopify12.onrender.com/api/items/categories/at/Furniture`);
+      let two = axios.get(`https://shopify12.onrender.com/api/items/categories/at/Decorators`);
       try {
         await axios
           .all([one, two])
