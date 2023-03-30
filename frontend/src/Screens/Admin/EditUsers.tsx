@@ -6,7 +6,7 @@ import { useState, useEffect, FormEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { BASE_URL } from "../../helper";
 export function EditUsers() {
   const { id } = useParams();
 
@@ -17,7 +17,7 @@ export function EditUsers() {
 
   useEffect(() => {
     axios
-      .get(`/api/users/${id}`)
+      .get(`${BASE_URL}/api/users/${id}`)
       .then((res) => {
         //console.log(res.data)
         setName(res.data.name);
@@ -31,7 +31,7 @@ export function EditUsers() {
 
   const sub = () => {
     axios
-      .put(`/api/users/${id}`, { _id: id, name, email, isAdmin })
+      .put(`${BASE_URL}/api/users/${id}`, { _id: id, name, email, isAdmin })
       .then((res) => {
 
         navigate("/users");

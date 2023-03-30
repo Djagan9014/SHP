@@ -6,7 +6,7 @@ import axios from "axios";
 import {  useState } from "react";
 import './Item.css'
 import { isTemplateExpression } from "typescript";
-
+import { BASE_URL } from "../helper";
 
 export function StoreItem({ item }: any) {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -47,7 +47,7 @@ export function StoreItem({ item }: any) {
     if (localStorage.getItem("HasUser") !== null) {
       const existItem = cart.cartitems.find((x:any) => x._id === item._id);
       const quantity = existItem ? existItem.quantity + 1 : 1;
-      axios.get(`/api/items/${item._id}`).then((res) => {
+      axios.get(`${BASE_URL}/api/items/${item._id}`).then((res) => {
         const data = res.data;
         ctxDispatch({
           type: 'CART_ADD_ITEM',

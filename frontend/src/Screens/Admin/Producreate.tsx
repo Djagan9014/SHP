@@ -4,13 +4,14 @@ import axios from "axios";
 import { useState } from "react";
 import FileBase64 from "react-file-base64";
 import Swal from "sweetalert2";
+import { BASE_URL } from "../../helper";
 export function Producreate() {
   const [item, setItem] = useState<any>({ title: "", image: "",category:"", price: "",Description:"",countInStock:""});
   const [items, setItems] = useState<any>([]);
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
     const result = await axios
-      .post("/api/items/", item)
+      .post(`${BASE_URL}/api/items/`, item)
       .then((res) => {
         console.log(res);
         Swal.fire("product Added Successfully");

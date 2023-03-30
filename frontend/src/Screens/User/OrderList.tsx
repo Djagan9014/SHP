@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect,useState } from 'react';
+import { BASE_URL } from '../../helper';
 import { Store } from '../../Store';
 
 
@@ -10,7 +11,7 @@ export function OrderList(){
     useEffect(() => {
         const fetchData = async () => {
           try {
-            axios.get(`/api/orders/mine`, {
+            axios.get(`${BASE_URL}/api/orders/mine`, {
               headers: { Authorization: `Bearer ${userInfo.token}` },
             }).then((res)=>{
                 setdata1(res.data)

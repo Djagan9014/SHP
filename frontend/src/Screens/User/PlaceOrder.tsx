@@ -7,6 +7,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Store } from '../../Store';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../helper';
 
 export function PlaceOrder(){
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ export function PlaceOrder(){
     const placeOrderHandler = async () => {
         try {
                cart.cartitems?.map((item:any)=>{
-              axios.put(`/api/items/${item._id}`,{countInStock: item.countInStock-item.quantity},
+              axios.put(`${BASE_URL}/api/items/${item._id}`,{countInStock: item.countInStock-item.quantity},
               {headers: {Authorization: `Bearer ${userInfo.token}`}}
               )
              .catch((err)=>{console.log(err);
@@ -29,7 +30,7 @@ export function PlaceOrder(){
               })
               
           const { data } = await axios.post(
-            '/api/orders',
+            `${BASE_URL}/api/orders`,
             {
               orderItems: cart.cartitems,
               shippingAddress: cart.shippingAddress,

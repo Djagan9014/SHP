@@ -7,6 +7,7 @@ import { useState } from "react";
 import "./Signup.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { log } from "console";
+import { BASE_URL } from "../../helper";
 export function Signup() {
   const navigate = useNavigate();
   const { search } = useLocation();
@@ -136,7 +137,7 @@ export function Signup() {
 
       } else {
         axios
-          .post("/api/users/signup", {
+          .post(`${BASE_URL}/api/users/signup`, {
             name,
             email,
             password,

@@ -7,6 +7,7 @@ import "../components/Item.css";
 import { IndividualIntervalsExample } from "../components/Crousal";
 import { StoreItem } from "../components/Item";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../helper";
 
 export function Home() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export function Home() {
     const fetchdata = async () => {
       try {
         await axios
-          .get(`https://shopify12.onrender.com/api/items/categories/all`)
+          .get(`${BASE_URL}/api/items/categories/all`)
           .then((res) => {
           
             setCategories(res.data);
@@ -38,8 +39,8 @@ export function Home() {
   }, []);
   useEffect(() => {
     const fetchdata1 = async () => {
-      let one = axios.get(`https://shopify12.onrender.com/api/items/categories/at/Furniture`);
-      let two = axios.get(`https://shopify12.onrender.com/api/items/categories/at/Decorators`);
+      let one = axios.get(`${BASE_URL}/api/items/categories/at/Furniture`);
+      let two = axios.get(`${BASE_URL}/api/items/categories/at/Decorators`);
       try {
         await axios
           .all([one, two])

@@ -2,6 +2,7 @@ import dazn from "../dazn.jpeg";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../helper";
 
 export function Login() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export function Login() {
   const HandleSubmit = (e: any) => {
     e.preventDefault();
     axios
-      .post("/api/users/signin", {
+      .post(`${BASE_URL}/api/users/signin`, {
         email,
         password,
       })
