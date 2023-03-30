@@ -10,6 +10,7 @@ orderRouter.get(
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const orders = await Order.find().populate('user', 'name');
     console.log(orders);
     res.send(orders);
@@ -20,6 +21,7 @@ orderRouter.post(
   '/',
   isAuth,
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const newOrder = new Order({
       orderItems: req.body.orderItems.map((x) => ({ ...x, product: x._id })),
       shippingAddress: req.body.shippingAddress,
@@ -40,6 +42,7 @@ orderRouter.get(
   '/mine',
   isAuth,
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const orders = await Order.find({ user: req.user._id });
     res.send(orders);
   })
@@ -49,6 +52,7 @@ orderRouter.get(
   '/:id',
   isAuth,
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const order = await Order.findById(req.params.id);
     if (order) {
       res.send(order);
@@ -61,6 +65,7 @@ orderRouter.get(
 orderRouter.put(
   '/:id/deliver',
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const order = await Order.findById(req.params.id);
     if (order) {
       order.isDelivered = true;
@@ -78,6 +83,7 @@ orderRouter.delete(
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const order = await Order.findById(req.params.id);
     if (order) {
       await order.remove();

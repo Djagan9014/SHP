@@ -6,7 +6,8 @@ const itemrouter = express.Router();
 
 itemrouter.post('/',
 expressAsyncHandler( async(req,res)=>{
-    console.log('createitem',req.body)
+  res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
+  console.log('createitem',req.body)
     const item = new Item(req.body);
     if(item){
         await item.save();
@@ -17,7 +18,8 @@ expressAsyncHandler( async(req,res)=>{
 }));
 
 itemrouter.get('/',expressAsyncHandler(async(req,res)=>{
-    const item =await Item.find()
+  res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
+  const item =await Item.find()
     if(item){
         res.status(200).json(item);
     } else {
@@ -28,6 +30,7 @@ itemrouter.get('/',expressAsyncHandler(async(req,res)=>{
 ))
 
 itemrouter.get('/:_id',expressAsyncHandler(async(req,res)=>{
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const itemId = req.params._id;
     const item = await Item.findById(itemId);
     if(item){
@@ -47,7 +50,7 @@ itemrouter.get('/categories/at/:type', expressAsyncHandler(async (req, res) => {
 )
 
 itemrouter.get('/categories/all', expressAsyncHandler(async (req, res) => {
-    //res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
+    res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
     const categorie = await Item.find().distinct('category');
     res.send(categorie);
   })
@@ -55,7 +58,7 @@ itemrouter.get('/categories/all', expressAsyncHandler(async (req, res) => {
 
 itemrouter.put('/:id',
     expressAsyncHandler(async (req, res) => {
-
+      res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
       const item = await Item.findById(req.params.id);
       if (item) {
         item.countInStock = req.body.countInStock
@@ -70,6 +73,7 @@ itemrouter.put('/:id',
 
 itemrouter.get('/search/sea',
     expressAsyncHandler(async(req,res)=>{
+      res.setHeader('Access-Control-Allow-Origin', 'https://glistening-hotteok-eb9a5f.netlify.app');
       const {query} = req;
       const Squery = query.query || '';
       const price = query.price || '';
